@@ -9,9 +9,25 @@ function App() {
   const [notes, setNotes] = useState(getInitialData());
   const [searchQuery, setSearchQuery] = useState('');
 
-  const onAddNoteHandler = ({ title, body }) => { };
-  const onDeleteNoteHandler = (id) => {};
-  const onSearchChangeHandler = (event) => {  };
+  const onAddNoteHandler = ({ title, body }) => {
+  setNotes((prevNotes) => [
+    ...prevNotes,
+    {
+      id: +new Date(), 
+      title,
+      body,
+      createdAt: new Date().toISOString(),
+      archived: false,
+    },
+  ]);
+};
+  const onDeleteNoteHandler = (id) => {
+  const updatedNotes = notes.filter((note) => note.id !== id);
+  setNotes(updatedNotes);
+};
+  const onSearchChangeHandler = (event) => {
+  setSearchQuery(event.target.value);
+};
 
 
   const onArchiveNoteHandler = (id) => {
