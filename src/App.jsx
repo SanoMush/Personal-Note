@@ -21,14 +21,15 @@ function App() {
     },
   ]);
 };
+
   const onDeleteNoteHandler = (id) => {
   const updatedNotes = notes.filter((note) => note.id !== id);
   setNotes(updatedNotes);
 };
+
   const onSearchChangeHandler = (event) => {
   setSearchQuery(event.target.value);
 };
-
 
   const onArchiveNoteHandler = (id) => {
     const updatedNotes = notes.map((note) => {
